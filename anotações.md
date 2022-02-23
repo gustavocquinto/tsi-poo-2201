@@ -40,3 +40,5 @@ Diagrama de objeto : Explica um sistema OO
 Diagrama de Perfil > Metamodelo (que descreve um modelo, serve para criar diagramas novos)
 
 Diagrama de Casos de uso - Varias formas de se utilizar o mesmo sistema
+
+Diagrama de Tempo : Detalha o comportamento dos objetos.
