@@ -27,6 +27,6 @@ Class Perfil implements Crud {
 
     public function listar(int $id = null):array{
         echo"\n Listado Perfil\n";
-        return array[];  
+        return array('teste');  
     }
 }
