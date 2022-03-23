@@ -8,5 +8,5 @@ Interface Crud {
 
     public function editar(int $id, array $dados):bool;
 
-    public function listar(int $id);
+    public function listar(int $id = null):array;
 }
