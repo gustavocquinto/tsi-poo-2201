@@ -1,5 +1,5 @@
 <?php
-Interface CRUD {
+Interface Crud {
     public function criar():bool;
 
     public function editar(int $id):bool;

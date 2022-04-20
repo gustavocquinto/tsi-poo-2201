@@ -1,12 +1,7 @@
 <?php
 include_once('../Interfaces/crud.interface.php');
 Class Investimento implements CRUD {
-    private $idAtivos;
-
-    public function __construct(int $idAtivos){
-        $this->idAtivos = $idAtivos;
-    }
-    public function criar():bool{
+    public function criar(int $idAtivos):bool{
 
     };
 
