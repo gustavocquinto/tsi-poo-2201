@@ -32,11 +32,8 @@ class Main{
             };
             $clientes['totalAtivos'] = $totalAtivos;
         };
-        
+        require_once('../Views/cliente.view.php');
         }
- 
-    
-
 }
 
 new Main;
