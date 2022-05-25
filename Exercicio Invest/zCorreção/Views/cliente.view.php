@@ -31,8 +31,8 @@
         </tbody>
         <tfoot>
             <tr>
-                <td> </td>
-                <td> </td>
+                <td> Totais</td>
+                <td> <?php echo count ($clientes)?></td>
                 <td> </td>
                 <td> </td>
             </tr>

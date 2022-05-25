@@ -1,8 +1,8 @@
 <?php 
 
-require __DIR__ . '/Model.class.php';
+require_once __DIR__ . '/Model.class.php';
 
-class Investimento extends Model{
+class investimento extends Model{
     public function __construct(){
         parent::__construct(); // chama o construtor da classe pai
         $this->tabela = 'investimentos';
@@ -41,24 +41,47 @@ class Investimento extends Model{
 
      }
      function listar(int $id = null):?array{
-         $stmt = $this->prepare("SELECT id, qtd, id_ativo, FROM {$this->tabela}");
-         $stmt->execute();
-         $resultado = $stmt->fetchAll();
 
-         return $resultado;
-     }
-     function carteiraCliente(int $id_cliente):array{
-         $stmt = $this->prepare("SELECT id, qtd, id_ativo, FROM {$this->tabela} WHERE id_cliente = :id");
-         $stmt->bindParam(':id', $id_cliente);
-         $stmt->execute();
-         $resultado = $stmt->fetchAll();
+        if($id){
+            $stmt = $this->prepare("SELECT id, qtd, id_ativo, FROM {$this->tabela} WHERE id = :id");
+            $stmt->bindParam(':id', $id);
+        }
+        else{
+            $stmt = $this->prepare("SELECT id, qtd, id_ativo, id_cliente FROM {$this->tabela}");
+        }
 
-         return $resultado;
+        $stmt->execute();
+
+        $lista = [];
+
+        while($registro = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $lista[] = $registro;
+        }
+        return $registro;
+}
+     function cliente(int $id_cliente):?array
+     {
+        $stmt = $this->prepare("SELECT
+                            id, qtd, id_ativo, id_cliente
+                        FROM
+                            {$this->tabela}
+                        WHERE
+                            id_cliente = :id");
+        $stmt->bindParam(':id', $id_cliente);
+
+        $stmt->execute();
+        $lista = [];
+
+        while($registro = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $lista[] = $registro;
+        }
+
+        return $lista;
      }
 }
 
 
-$investimento = new Investimento;
+//$investimento = new Investimento;
 
 
-$investimento->inserir(['qtd' => 2, 'id_ativo' => 2, 'id_cliente' => 8]);
+//$investimento->inserir(['qtd' => 2, 'id_ativo' => 2, 'id_cliente' => 8]);
